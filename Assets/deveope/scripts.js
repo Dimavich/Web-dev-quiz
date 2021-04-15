@@ -57,12 +57,23 @@ var questionsArr = [
     }
 ];
 
-
+ 
 
 
 function show(event){
     quiz.setAttribute("style" , "display: block;");
+    setQuestion();
 };
 
+function setQuestion () {
+    //populate the question
+    questions.textContent = questionsArr[0].question;
+    //populating the answers 
+    a.textContent = questionsArr[0].answer[0].text;
+    b.textContent = questionsArr[0].answer[1].text;
+    c.textContent = questionsArr[0].answer[2].text;
+    d.textContent = questionsArr[0].answer[3].text;
+};
 
+// to start the quiz 
 startBtn.addEventListener("click", show);
