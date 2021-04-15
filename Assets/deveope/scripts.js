@@ -1,12 +1,19 @@
 // variables 
-var startBtn = document.getElementsByClassName('title');
-var quiz =  document.getElementsByClassName('quiz');
-var clock =  document.getElementsById('clock');
-var question =  document.getElementsById('question');
+var startBtn = document.getElementById('start-btn');
+var quiz =  document.getElementById('quiz');
+var clock =  document.getElementById('clock');
+var question =  document.getElementById('question');
 var answers =  document.getElementsByClassName('ans-list');
-var a =  document.getElementsById('a');
-var b =  document.getElementsById('b');
-var c =  document.getElementsById('c');
-var d =  document.getElementsById('d');
+var a =  document.getElementById('a');
+var b =  document.getElementById('b');
+var c =  document.getElementById('c');
+var d =  document.getElementById('d');
 
 
+function show(event){
+    quiz.setAttribute("style" , "display: block;");
+};
+
+
+
+startBtn.addEventListener("click", show);

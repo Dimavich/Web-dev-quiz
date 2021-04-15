@@ -42,7 +42,7 @@ a {
     border:solid #264653  3px;
     width: 80%;
     margin: auto;
-    /* display: none; */
+    display: none;
 }
 
 .timer{
