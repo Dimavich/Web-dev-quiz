@@ -1,9 +1,11 @@
 // variables 
 var startBtn = document.getElementById('start-btn');
+var nextBtn = document.getElementById('next-btn');
 var quiz =  document.getElementById('quiz');
 var clock =  document.getElementById('clock');
 var questions =  document.getElementById('question');
 var answers =  document.getElementById('ans-list');
+index = 0;
 var a =  document.getElementById('a');
 var b =  document.getElementById('b');
 var c =  document.getElementById('c');
@@ -59,21 +61,83 @@ var questionsArr = [
 
  
 
-
+// shows the quiz
 function show(event){
     quiz.setAttribute("style" , "display: block;");
     setQuestion();
 };
 
-function setQuestion () {
+//sets the first question 
+function setQuestion (event) {
     //populate the question
-    questions.textContent = questionsArr[0].question;
+    questions.textContent = questionsArr[index].question;
     //populating the answers 
-    a.textContent = questionsArr[0].answer[0].text;
-    b.textContent = questionsArr[0].answer[1].text;
-    c.textContent = questionsArr[0].answer[2].text;
-    d.textContent = questionsArr[0].answer[3].text;
+    a.textContent = questionsArr[index].answer[0].text;
+    b.textContent = questionsArr[index].answer[1].text;
+    c.textContent = questionsArr[index].answer[2].text;
+    d.textContent = questionsArr[index].answer[3].text;
+
+    checkAns();
+    console.log(index);
+
 };
 
+
 // to start the quiz 
-startBtn.addEventListener("click", show);
+startBtn.addEventListener("click", show, setQuestion);
+
+nextBtn.addEventListener("click", function(event){
+    nextBtn.className = "start-btn hide";
+    index++
+    setQuestion();
+})
+
+
+// answer checker
+    function checkAns (){
+
+        a.addEventListener('click', function(event){
+            if (questionsArr[index].answer[0].correct){
+                console.log('correct');
+                a.textContent = ' Correct';
+            } else {
+                console.log('wrong');
+                a.textContent = ' Wrong';
+            }
+            nextBtn.className = "start-btn";
+        });
+
+        b.addEventListener('click', function(event){
+            if (questionsArr[index].answer[1].correct){
+                console.log('correct');
+                b.textContent = ' Correct';        
+            } else {
+                console.log('wrong');
+                b.textContent = ' Wrong';        
+            }
+            nextBtn.className = "start-btn";
+        });
+
+        c.addEventListener('click', function(event){
+            if (questionsArr[index].answer[2].correct){
+                console.log('correct');
+                c.textContent = ' Correct';                
+            } else {
+                console.log('wrong');
+                c.textContent = ' Wrong';        
+            }
+            nextBtn.className = "start-btn";
+        });
+
+        d.addEventListener('click', function(event){
+            if (questionsArr[index].answer[3].correct){
+                console.log('correct');
+                d.textContent = ' Correct';                
+            } else {
+                console.log('wrong');
+                d.textContent = ' Wrong';        
+            }
+            nextBtn.className = "start-btn";
+        });
+
+    };

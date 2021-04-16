@@ -66,10 +66,16 @@ a {
     border: solid white 1px;
     width: 50%;
     margin: auto;
+    padding-left: 20%;
 }
 
 .answers li:hover {
     background-color: #e9c46a;
+}
+
+
+.hide {
+    display: none;
 }
 
 
