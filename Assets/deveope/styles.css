@@ -78,5 +78,42 @@ a {
     display: none;
 }
 
+form {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+}
+
+#nameEl {
+    height: 30px;
+    width: 200px;
+}
+
+#submit-btn {
+    height: 35px;
+    width: 80px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #2a9d8f;
+    color: white;
+    border: solid white 1px;
+    border-radius: 15px;
+}
+
+#submit-btn:hover {
+    background-color: teal;
+}
+
+.results {
+    text-align: center;
+    margin-top: 5%;
+}
+
+#result {
+    font-size: 45px;
+    font-weight: bold;
+    color: #264653;
+}
 
 

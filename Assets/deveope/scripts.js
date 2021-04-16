@@ -9,8 +9,9 @@ var answers =  document.getElementById('ans-list');
 var a =  document.getElementById('a');
 var b =  document.getElementById('b');
 var c =  document.getElementById('c');
-var d =  document.getElementById('d');
-index = 0;
+var d =  document.getElementById('d'); 
+var index = 0;
+var score = 0;
 // questions
 var questionsArr = [
     {
@@ -55,7 +56,16 @@ var questionsArr = [
             {text: 'A. personal preferance', correct: false},
             {text: 'B. class is for single use while id can be applied to multiple items', correct: false},
             {text: 'C. id is only used for Javascript and class is used to style the page with css', correct: false},
-            {text: 'D. id is for single item on the page while calss can be applied to multople items', correct: true}
+            {text: 'D. id is for single item on the page while calss can be applied to multiple items', correct: true}
+        ]
+    },
+    {
+        question: 'Youre Done!',
+        answer: [
+            {text: 'A'},
+            {text: 'B.'},
+            {text: 'C.'},
+            {text: 'D.'}
         ]
     }
 ];
@@ -77,10 +87,9 @@ function setQuestion (event) {
     b.textContent = questionsArr[index].answer[1].text;
     c.textContent = questionsArr[index].answer[2].text;
     d.textContent = questionsArr[index].answer[3].text;
-    console.log(index);
     checkAns();
+    console.log(score);
 };
-
 
 // to start the quiz 
 startBtn.addEventListener("click", show, setQuestion);
@@ -92,15 +101,16 @@ nextBtn.addEventListener("click", function(event){
     setQuestion();
 
     //changes the button after all questions have been answered
-    if (index === 4) {
-        index = 0;
+    if (index === 5) {
+        score = localStorage.setItem('Score', JSON.stringify(score));
         nextBtn.textContent = "Done";
-        nextBtn.setAttribute('style', 'color: white;');
-        // this will take you to the score page (for now its just google )
         nextBtnLink.setAttribute('href', './Assets/deveope/score.html');
-    }
-})
+        nextBtn.setAttribute('style', 'color: white;');
+    // this will take you to the score page       
+          
 
+    }
+});
 
 // answer checker
     function checkAns (){
@@ -108,6 +118,7 @@ nextBtn.addEventListener("click", function(event){
         a.addEventListener('click', function(event){
             if (questionsArr[index].answer[0].correct){
                 a.textContent = ' Correct';
+                score += 1;
             } else {
                 a.textContent = ' Wrong';
             }
@@ -116,7 +127,8 @@ nextBtn.addEventListener("click", function(event){
 
         b.addEventListener('click', function(event){
             if (questionsArr[index].answer[1].correct){
-                b.textContent = ' Correct';        
+                b.textContent = ' Correct'; 
+                score +=1;      
             } else {
                 b.textContent = ' Wrong';        
             }
@@ -125,7 +137,8 @@ nextBtn.addEventListener("click", function(event){
 
         c.addEventListener('click', function(event){
             if (questionsArr[index].answer[2].correct){
-                c.textContent = ' Correct';                
+                c.textContent = ' Correct'; 
+                score += 1;              
             } else {
                 c.textContent = ' Wrong';        
             }
@@ -134,7 +147,8 @@ nextBtn.addEventListener("click", function(event){
 
         d.addEventListener('click', function(event){
             if (questionsArr[index].answer[3].correct){
-                d.textContent = ' Correct';                
+                d.textContent = ' Correct';
+                score += 1;               
             } else {
                 d.textContent = ' Wrong';        
             }
@@ -142,3 +156,4 @@ nextBtn.addEventListener("click", function(event){
         });
 
     };
+
