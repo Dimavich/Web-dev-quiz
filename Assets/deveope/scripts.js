@@ -1,15 +1,16 @@
 // variables 
 var startBtn = document.getElementById('start-btn');
+var nextBtnLink = document.getElementById('btn-link');
 var nextBtn = document.getElementById('next-btn');
 var quiz =  document.getElementById('quiz');
 var clock =  document.getElementById('clock');
 var questions =  document.getElementById('question');
 var answers =  document.getElementById('ans-list');
-index = 0;
 var a =  document.getElementById('a');
 var b =  document.getElementById('b');
 var c =  document.getElementById('c');
 var d =  document.getElementById('d');
+index = 0;
 // questions
 var questionsArr = [
     {
@@ -76,20 +77,28 @@ function setQuestion (event) {
     b.textContent = questionsArr[index].answer[1].text;
     c.textContent = questionsArr[index].answer[2].text;
     d.textContent = questionsArr[index].answer[3].text;
-
-    checkAns();
     console.log(index);
-
+    checkAns();
 };
 
 
 // to start the quiz 
 startBtn.addEventListener("click", show, setQuestion);
 
+//next button 
 nextBtn.addEventListener("click", function(event){
     nextBtn.className = "start-btn hide";
     index++
     setQuestion();
+
+    //changes the button after all questions have been answered
+    if (index === 4) {
+        index = 0;
+        nextBtn.textContent = "Done";
+        nextBtn.setAttribute('style', 'color: white;');
+        // this will take you to the score page (for now its just google )
+        nextBtnLink.setAttribute('href', './Assets/deveope/score.html');
+    }
 })
 
 
@@ -98,10 +107,8 @@ nextBtn.addEventListener("click", function(event){
 
         a.addEventListener('click', function(event){
             if (questionsArr[index].answer[0].correct){
-                console.log('correct');
                 a.textContent = ' Correct';
             } else {
-                console.log('wrong');
                 a.textContent = ' Wrong';
             }
             nextBtn.className = "start-btn";
@@ -109,10 +116,8 @@ nextBtn.addEventListener("click", function(event){
 
         b.addEventListener('click', function(event){
             if (questionsArr[index].answer[1].correct){
-                console.log('correct');
                 b.textContent = ' Correct';        
             } else {
-                console.log('wrong');
                 b.textContent = ' Wrong';        
             }
             nextBtn.className = "start-btn";
@@ -120,10 +125,8 @@ nextBtn.addEventListener("click", function(event){
 
         c.addEventListener('click', function(event){
             if (questionsArr[index].answer[2].correct){
-                console.log('correct');
                 c.textContent = ' Correct';                
             } else {
-                console.log('wrong');
                 c.textContent = ' Wrong';        
             }
             nextBtn.className = "start-btn";
@@ -131,10 +134,8 @@ nextBtn.addEventListener("click", function(event){
 
         d.addEventListener('click', function(event){
             if (questionsArr[index].answer[3].correct){
-                console.log('correct');
                 d.textContent = ' Correct';                
             } else {
-                console.log('wrong');
                 d.textContent = ' Wrong';        
             }
             nextBtn.className = "start-btn";
