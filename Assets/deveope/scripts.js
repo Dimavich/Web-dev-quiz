@@ -72,11 +72,10 @@ var questionsArr = [
     }
 ];
 
- 
-
 // shows the quiz
 function show(event){
     quiz.setAttribute("style" , "display: block;");
+    startBtn.className = 'hide';
     setQuestion();
     setTimer();
 };
@@ -93,14 +92,14 @@ function setQuestion (event) {
     checkAns();
 };
 
+//timer function
 function setTimer() {
     var timerInterval = setInterval(function() {
         secondsLeft--; 
         timer.textContent = secondsLeft ;
-    
+        //when timer gets to 0
         if(secondsLeft === 0) {
           clearInterval(timerInterval);
-          // what to do after timer runs out
           window.location.href = './Assets/deveope/score.html'
         }
       }, 1000);
@@ -117,11 +116,13 @@ nextBtn.addEventListener("click", function(event){
 
     //changes the button after all questions have been answered
     if (index === 5) {
+        //saves score to local storage
         score = localStorage.setItem('Score', JSON.stringify(score));
+        // this will take you to the score page
         nextBtn.textContent = "Done";
         nextBtnLink.setAttribute('href', './Assets/deveope/score.html');
         nextBtn.setAttribute('style', 'color: white;');
-    // this will take you to the score page       
+           
           
 
     }
