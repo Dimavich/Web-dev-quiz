@@ -13,7 +13,7 @@ var c =  document.getElementById('c');
 var d =  document.getElementById('d'); 
 var index = 0;
 var score = 0;
-var secondsLeft = 10;
+var secondsLeft = 15;
 // questions
 var questionsArr = [
     {
@@ -91,21 +91,18 @@ function setQuestion (event) {
     c.textContent = questionsArr[index].answer[2].text;
     d.textContent = questionsArr[index].answer[3].text;
     checkAns();
-    console.log(score);
 };
 
 function setTimer() {
     var timerInterval = setInterval(function() {
-        secondsLeft--; // this counts down and ++ will count up
-        timer.textContent = secondsLeft +':00';
+        secondsLeft--; 
+        timer.textContent = secondsLeft ;
     
         if(secondsLeft === 0) {
-          // Stops execution of action at set interval
           clearInterval(timerInterval);
-          // Calls function to create and append image
-          
+          // what to do after timer runs out
+          window.location.href = './Assets/deveope/score.html'
         }
-    
       }, 1000);
 }
 
