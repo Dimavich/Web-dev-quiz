@@ -6,12 +6,14 @@ var quiz =  document.getElementById('quiz');
 var clock =  document.getElementById('clock');
 var questions =  document.getElementById('question');
 var answers =  document.getElementById('ans-list');
+var timer = document.getElementById('clock');
 var a =  document.getElementById('a');
 var b =  document.getElementById('b');
 var c =  document.getElementById('c');
 var d =  document.getElementById('d'); 
 var index = 0;
 var score = 0;
+var secondsLeft = 10;
 // questions
 var questionsArr = [
     {
@@ -76,6 +78,7 @@ var questionsArr = [
 function show(event){
     quiz.setAttribute("style" , "display: block;");
     setQuestion();
+    setTimer();
 };
 
 //sets the first question 
@@ -90,6 +93,21 @@ function setQuestion (event) {
     checkAns();
     console.log(score);
 };
+
+function setTimer() {
+    var timerInterval = setInterval(function() {
+        secondsLeft--; // this counts down and ++ will count up
+        timer.textContent = secondsLeft +':00';
+    
+        if(secondsLeft === 0) {
+          // Stops execution of action at set interval
+          clearInterval(timerInterval);
+          // Calls function to create and append image
+          
+        }
+    
+      }, 1000);
+}
 
 // to start the quiz 
 startBtn.addEventListener("click", show, setQuestion);
